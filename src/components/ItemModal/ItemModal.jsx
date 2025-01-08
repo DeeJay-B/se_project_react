@@ -1,8 +1,7 @@
-import { preview } from "vite";
 import "./ItemModal.css";
 function ItemModal({ activeModal, onClose, card }) {
   return (
-    <div className={`modal ${preview && "modal_opened"}`}>
+    <div className={`modal ${activeModal && "modal_opened"}`}>
       <div className="modal__content_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           close
