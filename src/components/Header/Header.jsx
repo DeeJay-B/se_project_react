@@ -2,7 +2,6 @@ import "./Header.css";
 import logo from "../../assets/header_logo.svg";
 import avatar from "../../assets/header_avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleDateString("default", {
     month: "long",
