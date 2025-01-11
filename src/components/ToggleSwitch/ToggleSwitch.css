@@ -17,7 +17,7 @@
   appearance: none;
 }
 
-.toggle__switch-slider {
+.toggle__switch-slide {
   border-radius: 20px;
   width: 28px;
   height: 28px;
@@ -28,11 +28,11 @@
   position: absolute;
 }
 
-.toggle__switch-slider-F {
+.toggle__switch-slide-F {
   transition: all 5s ease-in-out 2s;
 }
 
-.toggle__switch-slider-C {
+.toggle__switch-slide-C {
   left: 28px;
   transition: all 5s ease-in-out 2s;
 }
