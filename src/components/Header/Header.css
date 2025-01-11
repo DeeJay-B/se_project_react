@@ -2,6 +2,10 @@
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
+  max-width: 1360px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 .header__logo {
@@ -15,12 +19,25 @@
 .header__add-clothes-btn {
   margin-left: auto;
   margin: 0 20px 0 auto;
+  background: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
 }
 
 .header__user-container {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.header__user-link:link,
+.header__user-link:visited,
+.header__user-link:hover,
+.header__user-link:active {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .header__username {

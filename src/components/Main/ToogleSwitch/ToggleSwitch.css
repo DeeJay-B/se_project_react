@@ -1,0 +1,76 @@
+.toggle {
+  margin-left: auto;
+  padding: 0 20px 0 0;
+}
+
+.toggle__switch {
+  display: flex;
+  position: relative;
+}
+
+.toggle__switch-box {
+  width: 56px;
+  height: 28px;
+  background-color: #fff;
+  border: 2px solid #7e7e7e;
+  border-radius: 20px;
+  appearance: none;
+}
+
+.toggle__switch-slider {
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+}
+
+.toggle__switch-slider-F {
+  transition: all 5s ease-in-out 2s;
+}
+
+.toggle__switch-slider-C {
+  left: 28px;
+  transition: all 5s ease-in-out 2s;
+}
+
+.toggle__temp-F {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0;
+}
+
+.toggle__temp-C {
+  position: absolute;
+  top: 7px;
+  left: 37px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0;
+}
+
+.toggle__switch-active-F {
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 700;
+}
+
+.toggle__switch-active-C {
+  color: #fff;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 700;
+}

@@ -6,3 +6,12 @@
   list-style: none;
   gap: 21px;
 }
+
+.cards__text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
