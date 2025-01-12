@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants/";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
@@ -25,7 +25,7 @@ function WeatherCard({ weatherData }) {
       </p>
       <img
         src={weatherOptionUrl}
-        alt={`Card Showing${weatherOptionCondition}`}
+        alt={`Card Showing ${weatherOptionCondition}`}
         className="weather-card__image"
       />
     </section>
