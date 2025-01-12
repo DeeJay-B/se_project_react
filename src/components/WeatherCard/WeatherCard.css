@@ -13,10 +13,17 @@
   position: absolute;
   top: 20px;
   left: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
 }
 
 .weather-card__image {
   object-fit: cover;
   object-position: right top;
   width: 100%;
+}
+
+.cards__text {
+  font-size: 20px;
+  line-height: 24.8px;
+  font-family: "Cabinet Grotesk", sans-serif;
 }

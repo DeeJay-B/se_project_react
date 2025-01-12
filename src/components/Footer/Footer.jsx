@@ -7,8 +7,10 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <p className="footer__copyright">Developed by DeJon Bell</p>
-      <p className="footer__year">{currentYear}</p>
+      <div className="footer__container">
+        <p className="footer__copyright">&copy; DeJon Bell</p>
+        <p className="footer__year">{currentYear}</p>
+      </div>
     </footer>
   );
 }
