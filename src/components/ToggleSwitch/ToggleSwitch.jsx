@@ -6,26 +6,27 @@ function ToggleSwitch() {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
+
   function handleChange() {
     handleToggleSwitchChange();
   }
 
   return (
     <div className="toggle">
-      <label className="toggle_switch" htmlFor="toggle">
+      <label className="toggle__switch" htmlFor="toggle">
         <input
-          onChange={handleChange}
-          id="toggle"
-          name="toggle"
-          type="checkbox"
           className="toggle__switch-box"
-          aria-label="Toggle Switch for Temperature Unit"
+          type="checkbox"
+          name="toggle"
+          id="toggle"
+          aria-label="Toggle temperature unit"
+          onChange={handleChange}
         />
         <span
           className={
             currentTemperatureUnit === "F"
-              ? "toggle__switch-slide toggle__switch-slide-F"
-              : "toggle__switch-slide toggle__switch-slide-C"
+              ? "toggle__switch-slider toggle__switch-slider-F"
+              : "toggle__switch-slider toggle__switch-slider-C"
           }
         ></span>
         <p
@@ -33,7 +34,6 @@ function ToggleSwitch() {
             currentTemperatureUnit === "F" && "toggle__switch-active-F"
           }`}
         >
-          {" "}
           F
         </p>
         <p
