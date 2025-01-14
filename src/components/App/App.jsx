@@ -61,11 +61,7 @@ function App() {
           <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         </div>
         <ModalWithForm />
-        <AddItemModal
-          activeModal={activeModal}
-          onClose={closeActiveModal}
-          closeActiveModal={closeActiveModal}
-        />
+        <AddItemModal activeModal={activeModal} onClose={closeActiveModal} />
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
