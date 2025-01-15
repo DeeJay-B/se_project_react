@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ activeModal, onClose }) => {
   return (
-    <>
+    <div>
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
@@ -30,26 +30,41 @@ const AddItemModal = ({ activeModal, onClose }) => {
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input id="hot" type="radio" className="modal__radio-input" />
+            <input
+              id="hot"
+              name="weatherType"
+              type="radio"
+              className="modal__radio-input"
+            />
             Hot
           </label>
           <label
             htmlFor="warm"
             className="modal__label modal__label_type_radio"
           >
-            <input id="warm" type="radio" className="modal__radio-input" />
+            <input
+              id="warm"
+              name="weatherType"
+              type="radio"
+              className="modal__radio-input"
+            />
             Warm
           </label>
           <label
             htmlFor="cold"
             className="modal__label modal__label_type_radio"
           >
-            <input id="cold" type="radio" className="modal__radio-input" />
+            <input
+              id="cold"
+              name="weatherType"
+              type="radio"
+              className="modal__radio-input"
+            />
             Cold
           </label>
         </fieldset>
       </ModalWithForm>
-    </>
+    </div>
   );
 };
 
