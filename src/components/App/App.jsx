@@ -13,7 +13,7 @@ import Profile from "../Profile/Profile";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
-import { defaultClothingItems } from "../../utils/constants";
+// import { defaultClothingItems } from "../../utils/constants";
 import { getItems, addItem, deleteCard } from "../../utils/api";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     temp: { F: 999, C: 999 },
     city: "",
   });
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -78,7 +78,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
         setClothingItems(data);
       })
       .catch(console.error);
@@ -103,7 +102,7 @@ function App() {
               }
             />
             <Route
-              path="/Profile"
+              path="/profile"
               element={
                 <Profile
                   handleAddClick={handleAddClick}

@@ -16,7 +16,7 @@ function ClothesSection({ handleCardClick, clothingItems, handleAddClick }) {
           return (
             <ItemCard
               key={item._id}
-              item={item[0]}
+              item={item}
               onCardClick={handleCardClick}
             />
           );

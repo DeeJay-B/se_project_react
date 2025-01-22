@@ -52,3 +52,27 @@
   font-size: 20px;
   line-height: 24px;
 }
+
+.modal__delete-btn {
+  background: #ff4d00;
+  font-family: Cabinet Grotesk;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 101px;
+  height: 24px;
+  top: 624px;
+  left: 836px;
+  gap: 0px;
+  border-radius: 16px 0px 0px 0px;
+  opacity: 0px;
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px 32px;
+}
