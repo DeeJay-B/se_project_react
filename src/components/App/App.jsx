@@ -50,7 +50,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const handleOpenDelete = (cardId) => {
+  const handleDelete = (cardId) => {
     deleteCard(selectedCard._id)
       .then((data) => {
         setClothingItems(clothingItems.filter((item) => item._id !== cardId));
@@ -123,7 +123,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          openDelete={handleOpenDelete}
+          onDelete={handleDelete}
         />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
