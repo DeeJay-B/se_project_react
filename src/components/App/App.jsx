@@ -15,6 +15,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
 // import { defaultClothingItems } from "../../utils/constants";
 import { getItems, addItem, deleteCard } from "../../utils/api";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -53,11 +54,17 @@ function App() {
   const handleDelete = (cardId) => {
     deleteCard(selectedCard._id)
       .then((data) => {
-        setClothingItems(clothingItems.filter((item) => item._id !== cardId));
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== selectedCard._id)
+        );
         setSelectedCard({});
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleOpenDelete = (cardId) => {
+    setActiveModal("confirm-modal");
   };
 
   const handleToggleSwitchChange = () => {
@@ -123,7 +130,12 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          onDelete={handleDelete}
+          onOpenDelete={handleOpenDelete}
+        />
+        <ConfirmModal
+          isOpen={activeModal === "confirm-modal"}
+          onSubmit={handleDelete}
+          onClose={closeActiveModal}
         />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
