@@ -10,7 +10,7 @@ This action is irreversible."
       onClose={onClose}
       onSubmit={onSubmit}
     >
-      <div className="modal__confrim-btns">
+      <div className="modal__confirm-btns">
         <button type="submit" className="modal__submit">
           Yes, delete item
         </button>

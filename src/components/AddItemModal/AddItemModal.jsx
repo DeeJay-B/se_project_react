@@ -11,10 +11,11 @@ const AddItemModal = ({ activeModal, onClose, onAddItemModalSubmit }) => {
   const handleWeatherChange = (e) => setWeather(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
-    setName("");
-    setImageUrl("");
-    setWeather("");
+    onAddItemModalSubmit({ name, imageUrl, weather }).then(() => {
+      setName("");
+      setImageUrl("");
+      setWeather("");
+    });
   };
 
   return (

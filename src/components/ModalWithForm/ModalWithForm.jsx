@@ -2,7 +2,7 @@ import "./ModalWithForm.css";
 import closebtn from "../../assets/close-btn.png";
 function ModalWithForm({
   children,
-  buttonText,
+  // buttonText,
   title,
   isOpen,
   onClose,
