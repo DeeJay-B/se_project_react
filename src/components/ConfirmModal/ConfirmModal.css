@@ -1,0 +1,7 @@
+.modal__confirm-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
