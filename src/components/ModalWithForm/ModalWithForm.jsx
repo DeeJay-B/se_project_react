@@ -15,7 +15,7 @@ function ModalWithForm({
 
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className={`modal__content modal__content_type_${name}`}>
+      <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
           <img src={closebtn} alt="close" className="modal__close-btn" />

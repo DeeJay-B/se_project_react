@@ -13,10 +13,14 @@ This action is irreversible."
         onSubmit={onSubmit}
       >
         <div className="modal__confirm-btns">
-          <button type="submit" className="modal__submit">
+          <button type="submit" className="modal__submit_delete">
             Yes, delete item
           </button>
-          <button onClick={onClose} type="button" className="modal__submit">
+          <button
+            onClick={onClose}
+            type="button"
+            className="modal__submit_cancel"
+          >
             Cancel
           </button>
         </div>
