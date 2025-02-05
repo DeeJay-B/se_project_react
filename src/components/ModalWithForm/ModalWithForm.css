@@ -45,7 +45,6 @@
   box-sizing: border-box;
   position: relative;
   border-radius: 16px;
-  height: 436px;
 }
 
 .modal__form {
@@ -92,11 +91,6 @@
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* 
-.modal__content {
-  position: relative;
-  border-radius: 16px;
-} */
 
 .modal__label {
   font-size: 16px;
@@ -120,4 +114,10 @@
 
 .modal__legend {
   margin-bottom: 12px;
+}
+
+.modal__content_type_image {
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
 }
