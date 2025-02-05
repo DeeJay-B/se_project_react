@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #0000004d;
+  background: rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -43,12 +43,10 @@
   max-width: 496px;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+  border-radius: 16px;
+  height: 436px;
 }
-
-/* .modal__form {
-  display: flex;
-  flex-direction: column;
-} */
 
 .modal__form {
   display: flex;
@@ -94,20 +92,19 @@
 .modal__submit:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
-
+/* 
 .modal__content {
   position: relative;
   border-radius: 16px;
-}
+} */
 
 .modal__label {
   font-size: 16px;
   line-height: 20px;
   font-weight: 700;
-  color: #0000004d;
+  color: #000000;
   margin: 0;
-  width: 42px;
-  height: 20px;
+  margin-bottom: 24px;
 }
 
 .modal__radio-input {
@@ -115,4 +112,12 @@
   height: 16px;
   margin-right: 8px;
   cursor: pointer;
+}
+
+.modal__label_type_radio {
+  margin-bottom: 8px;
+}
+
+.modal__legend {
+  margin-bottom: 12px;
 }

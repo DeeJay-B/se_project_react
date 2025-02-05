@@ -3,7 +3,7 @@ import closebtn from "../../assets/close-btn.png";
 function ItemModal({ activeModal, onClose, card, onOpenDelete }) {
   return (
     <div className={`modal ${activeModal === "preview" ? "modal_opened" : ""}`}>
-      <div className="modal__content_type_image modal__content">
+      <div className="modal__content_type_image ">
         <button onClick={onClose} type="button" className="modal__close">
           <img src={closebtn} alt="close" className="modal__close-btn" />
         </button>
