@@ -42,11 +42,12 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }, reset) => {
     return addItem({ name, imageUrl, weather })
       .then((values) => {
-        setClothingItems([...clothingItems, values]);
+        setClothingItems([values, ...clothingItems]);
         closeActiveModal();
+        reset();
       })
       .catch((err) => console.log(err));
   };
