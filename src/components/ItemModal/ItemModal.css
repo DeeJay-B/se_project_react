@@ -25,6 +25,7 @@
   object-fit: cover;
   border-radius: 12px;
   height: 100%;
+  max-width: 496px;
 }
 
 .modal__details {
