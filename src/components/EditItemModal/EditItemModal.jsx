@@ -1,5 +1,5 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./ItemModal.css";
+import "./EditItemModal.css";
 import { useState } from "react";
 
 function EditItemModal({ isOpen, onClose, item, handleEditSubmit }) {
