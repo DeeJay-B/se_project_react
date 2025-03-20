@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 
 import "./Header.css";
 import logo from "../../assets/header_logo.svg";
-import avatar from "../../assets/header_avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleDateString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <header className="header">
@@ -31,10 +34,22 @@ function Header({ handleAddClick, weatherData }) {
         + Add Clothes
       </button>
       <Link to="/profile">
-        <div className="header__user-container">
-          <p className="header__username">Terrance Tegegne</p>
-          <img src={avatar} alt="Terrance Tegegne" className="header__avatar" />
-        </div>
+        {currentUser && (
+          <div className="header__user">
+            <p className="header__username">{currentUser.name}</p>
+            <img
+              src={currentUser.avatar}
+              alt={currentUser.name}
+              className="header__avatar"
+            />
+          </div>
+        )}
+        {!currentUser && (
+          <div className="header__auth">
+            <button className="header__button">Log in</button>
+            <button className="header__button">Sign up</button>
+          </div>
+        )}
       </Link>
     </header>
   );
