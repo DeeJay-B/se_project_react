@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
-import { checkToken } from "../utils/auth";
+import { checkToken } from "../../utils/auth";
 
 export const CurrentUserContext = createContext();
 

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
 const RegisterModal = ({ isOpen, onClose }) => {
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);

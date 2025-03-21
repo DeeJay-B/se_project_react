@@ -4,7 +4,7 @@ import "./Header.css";
 import logo from "../../assets/header_logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleDateString("default", {
