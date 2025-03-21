@@ -17,8 +17,14 @@ import Profile from "../Profile/Profile";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
-// import { defaultClothingItems } from "../../utils/constants";
-import { getItems, addItem, deleteCard } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteCard,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
+
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 
 function App() {
@@ -119,6 +125,20 @@ function App() {
     navigate("/");
   };
 
+  const handleLikeClick = (itemId, isLiked) => {
+    const likePromise = isLiked ? removeCardLike(itemId) : addCardLike(itemId);
+    likePromise
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((c) => (c._id === itemId ? updatedCard : c))
+        );
+
+        if (selectedCard._id === itemId) {
+          setSelectedCard(updatedCard);
+        }
+      })
+      .catch(console.error);
+  };
   return (
     <CurrentUserContext.Provider
       value={{
@@ -143,6 +163,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onLikeClick={handleLikeClick}
                   />
                 }
               />
@@ -154,6 +175,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
+                      onLikeClick={handleLikeClick}
                     />
                   </ProtectedRoute>
                 }
