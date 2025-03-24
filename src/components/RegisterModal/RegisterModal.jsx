@@ -2,8 +2,10 @@ import { useState, useContext } from "react";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, onClose }) => {
+  console.log("isOpenRegiser", isOpen);
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -52,60 +54,58 @@ const RegisterModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
-      <div className="modal__content">
-        <h2 className="modal__title">Register</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit} className="modal__form">
-          <div className="form-group">
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className="modal__submit">
-            Register
-          </button>
-        </form>
-        <button type="button" onClick={onClose} className="modal__close">
-          ×
-        </button>
+    <ModalWithForm
+      isOpen={isOpen}
+      title="Register"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      {error && <div className="error-message">{error}</div>}
+
+      <div className="form-group">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
       </div>
-    </div>
+      <div className="form-group">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <button type="submit" className="modal__submit">
+        Register
+      </button>
+    </ModalWithForm>
   );
 };
 

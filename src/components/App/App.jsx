@@ -9,11 +9,12 @@ import { checkToken } from "../../utils/auth";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+//import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -97,8 +98,9 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((data) => {
-        setClothingItems(data);
+      .then((res) => {
+        const items = res.data;
+        setClothingItems(items);
       })
       .catch(console.error);
   }, []);
@@ -154,7 +156,11 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              onRegisterClick={() => setActiveModal("register-modal")}
+            />
             <Routes>
               <Route
                 path="/"
@@ -197,6 +203,11 @@ function App() {
           <ConfirmModal
             isOpen={activeModal === "confirm-modal"}
             onSubmit={handleDelete}
+            onClose={closeActiveModal}
+          />
+          <RegisterModal
+            isOpen={activeModal === "register-modal"}
+            onSubmit={() => console.log("register submit triggered")}
             onClose={closeActiveModal}
           />
         </CurrentTemperatureUnitContext.Provider>

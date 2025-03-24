@@ -1,4 +1,4 @@
-.modal {
+/* .modal {
   display: none;
   position: fixed;
   top: 0;
@@ -23,14 +23,14 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-}
+} */
 
 .modal h2 {
   margin-bottom: 1.5rem;
   color: #333;
   text-align: center;
 }
-
+/* 
 .form-group {
   margin-bottom: 1rem;
 }
@@ -63,7 +63,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #0056b3;
-}
+} */
 
 .modal-close {
   position: absolute;

@@ -6,7 +6,12 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  onRegisterClick,
+  onLoginClick,
+}) {
   const currentDate = new Date().toLocaleDateString("default", {
     month: "long",
     day: "numeric",
@@ -46,8 +51,12 @@ function Header({ handleAddClick, weatherData }) {
         )}
         {!currentUser && (
           <div className="header__auth">
-            <button className="header__button">Log in</button>
-            <button className="header__button">Sign up</button>
+            <button onClick={onLoginClick} className="header__button">
+              Log in
+            </button>
+            <button onClick={onRegisterClick} className="header__button">
+              Sign up
+            </button>
           </div>
         )}
       </Link>
