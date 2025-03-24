@@ -8,8 +8,8 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Backend
-The backend for this project is available at: [WTWR (What to Wear?) Backend]
-(`git@github.com:DeeJay-B/se_project_express.git`)
+The backend for this project is available at: [WTWR (What to Wear?) Backend](https://github.com/DeeJay-B/se_project_express.git)
+
 
 Overview
 
