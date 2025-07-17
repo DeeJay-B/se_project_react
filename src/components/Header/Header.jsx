@@ -51,6 +51,8 @@ function Header({
               onClick={handleAddClick}
               type="button"
               className="header__add-clothes-btn"
+              disabled={!currentUser}
+              title={!currentUser ? "Log in to add clothes" : ""}
             >
               + Add Clothes
             </button>
