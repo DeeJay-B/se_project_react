@@ -4,15 +4,15 @@ import { register } from "../../utils/auth";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, onClose }) => {
+const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
   console.log("isOpenRegiser", isOpen);
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    avatar: "",
   });
 
   const handleChange = (e) => {
@@ -24,33 +24,9 @@ const RegisterModal = ({ isOpen, onClose }) => {
     setError(""); // Clear error when user types
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords don't match!");
-      return;
-    }
-
-    try {
-      const data = await register({
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-      });
-
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        setIsLoggedIn(true);
-        setCurrentUser(data.user);
-        onClose();
-      }
-    } catch (error) {
-      const errorMessage =
-        error.message || "Registration failed. Please try again.";
-      setError(errorMessage);
-    }
+    onSubmit(formData);
   };
 
   return (
@@ -65,9 +41,9 @@ const RegisterModal = ({ isOpen, onClose }) => {
       <div className="form-group">
         <input
           type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
+          name="name"
+          placeholder="Name"
+          value={formData.name}
           onChange={handleChange}
           required
         />
@@ -94,14 +70,15 @@ const RegisterModal = ({ isOpen, onClose }) => {
       </div>
       <div className="form-group">
         <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={formData.confirmPassword}
+          type="avatar"
+          name="avatar"
+          placeholder="avatar"
+          value={formData.avatar}
           onChange={handleChange}
           required
         />
       </div>
+
       <button type="submit" className="modal__submit">
         Register
       </button>

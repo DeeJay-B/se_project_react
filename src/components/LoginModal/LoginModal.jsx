@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import { login } from "../../utils/auth";
 import "./LoginModal.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const LoginModal = ({ isOpen, onClose }) => {
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
@@ -43,40 +44,36 @@ const LoginModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className={`modal ${isOpen ? "modal__opened" : ""}`}>
-      <div className="modal__content">
-        <h2 className="modal__title">Log in</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleSubmit} className="modal__form">
-          <div className="form-group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" className="modal__submit">
-            Log in
-          </button>
-        </form>
-        <button type="button" onClick={onClose} className="modal__close">
-          ×
-        </button>
+    <ModalWithForm
+      isOpen={isOpen}
+      title="Register"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
+      <div className="form-group">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
       </div>
-    </div>
+      <div className="form-group">
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <button type="submit" className="modal__submit">
+        Log in
+      </button>
+    </ModalWithForm>
   );
 };
 

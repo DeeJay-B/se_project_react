@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
-import { checkToken } from "../../utils/auth";
+import { checkToken, register } from "../../utils/auth";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -15,6 +15,7 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -141,6 +142,25 @@ function App() {
       })
       .catch(console.error);
   };
+
+  const handleRegisterSubmit = ({ name, email, password, avatar }) => {
+    register({ name, avatar, email, password })
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          setIsLoggedIn(true);
+          setCurrentUser(data);
+          closeActiveModal();
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleOnSignOut = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -160,6 +180,8 @@ function App() {
               handleAddClick={handleAddClick}
               weatherData={weatherData}
               onRegisterClick={() => setActiveModal("register-modal")}
+              onLoginClick={() => setActiveModal("login-modal")}
+              onSignoutClick={handleOnSignOut}
             />
             <Routes>
               <Route
@@ -207,9 +229,13 @@ function App() {
           />
           <RegisterModal
             isOpen={activeModal === "register-modal"}
-            onSubmit={() => console.log("register submit triggered")}
+            onSubmit={handleRegisterSubmit}
             onClose={closeActiveModal}
           />
+          <LoginModal
+            isOpen={activeModal === "login-modal"}
+            onClose={closeActiveModal}
+          />{" "}
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </CurrentUserContext.Provider>
