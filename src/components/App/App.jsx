@@ -150,16 +150,19 @@ function App() {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           setCurrentUser(data);
-          closeActiveModal();
+          closeActiveModal(); // Only closes on success
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err)); // Modal stays open on error
   };
 
   const handleOnSignOut = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
   };
+
+  const openLoginModal = () => setActiveModal("login-modal");
+  const openRegisterModal = () => setActiveModal("register-modal");
 
   return (
     <CurrentUserContext.Provider
@@ -231,10 +234,12 @@ function App() {
             isOpen={activeModal === "register-modal"}
             onSubmit={handleRegisterSubmit}
             onClose={closeActiveModal}
+            switchToLogin={openLoginModal}
           />
           <LoginModal
             isOpen={activeModal === "login-modal"}
             onClose={closeActiveModal}
+            switchToRegister={openRegisterModal}
           />{" "}
         </CurrentTemperatureUnitContext.Provider>
       </div>

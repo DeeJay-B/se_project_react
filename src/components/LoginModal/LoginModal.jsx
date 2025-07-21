@@ -4,7 +4,7 @@ import { login } from "../../utils/auth";
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, onClose }) => {
+const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -46,7 +46,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   return (
     <ModalWithForm
       isOpen={isOpen}
-      title="Register"
+      title="Log in"
       onClose={onClose}
       onSubmit={handleSubmit}
     >
@@ -70,8 +70,17 @@ const LoginModal = ({ isOpen, onClose }) => {
           required
         />
       </div>
+      {error && <p className="modal__error">{error}</p>}
       <button type="submit" className="modal__submit">
         Log in
+      </button>
+
+      <button
+        type="button"
+        className="modal__switch-button"
+        onClick={switchToRegister}
+      >
+        or Register
       </button>
     </ModalWithForm>
   );

@@ -4,8 +4,7 @@ import { register } from "../../utils/auth";
 import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
-  console.log("isOpenRegiser", isOpen);
+const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -70,9 +69,9 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
       </div>
       <div className="form-group">
         <input
-          type="avatar"
+          type="text"
           name="avatar"
-          placeholder="avatar"
+          placeholder="Avatar URL"
           value={formData.avatar}
           onChange={handleChange}
           required
@@ -81,6 +80,14 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
 
       <button type="submit" className="modal__submit">
         Register
+      </button>
+
+      <button
+        type="button"
+        className="modal__switch-button"
+        onClick={switchToLogin}
+      >
+        or Log in
       </button>
     </ModalWithForm>
   );

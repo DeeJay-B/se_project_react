@@ -1,18 +1,40 @@
 .sidebar {
   display: flex;
+  flex-direction: column; /* stack items vertically */
   width: 229px;
-  height: 56px;
-  gap: 15px;
   padding-top: 19px;
+  gap: 10px; /* space between avatar, username, button */
+  align-items: center; /* center avatar and text horizontally */
+  height: auto; /* allow container height to grow */
 }
 
 .sidebar__avatar {
   width: 56px;
   height: 56px;
+  border-radius: 50%; /* optional: make avatar circular */
 }
 
 .sidebar__username {
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
+  margin: 0; /* reset default p margin */
+  text-align: center;
+}
+
+.sidebar__edit-button {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%; /* full width of sidebar */
+  max-width: 200px;
+}
+
+.sidebar__edit-button:hover {
+  background-color: #155ab6;
 }

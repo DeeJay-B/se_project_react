@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import "./Header.css";
 import logo from "../../assets/header_logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -33,39 +32,38 @@ function Header({
 
       <ToggleSwitch />
 
-      <Link to="/profile">
-        {currentUser && (
-          <div className="header__user">
+      {currentUser ? (
+        <div className="header__auth">
+          <Link to="/profile" className="header__user">
             <p className="header__username">{currentUser.name}</p>
             <img
               src={currentUser.avatar}
               alt={currentUser.name}
               className="header__avatar"
             />
-            <button onClick={onSignoutClick}>Log out</button>
-          </div>
-        )}
-        {!currentUser && (
-          <div className="header__auth">
-            <button
-              onClick={handleAddClick}
-              type="button"
-              className="header__add-clothes-btn"
-              disabled={!currentUser}
-              title={!currentUser ? "Log in to add clothes" : ""}
-            >
-              + Add Clothes
-            </button>
-            <button onClick={onLoginClick} className="header__button">
-              Log in
-            </button>
-            <button onClick={onRegisterClick} className="header__button">
-              Sign up
-            </button>
-            <></>
-          </div>
-        )}
-      </Link>
+          </Link>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+            title="Add new clothing item"
+          >
+            + Add Clothes
+          </button>
+          <button onClick={onSignoutClick} className="header__button">
+            Log out
+          </button>
+        </div>
+      ) : (
+        <div className="header__auth">
+          <button onClick={onLoginClick} className="header__button">
+            Log in
+          </button>
+          <button onClick={onRegisterClick} className="header__button">
+            Sign up
+          </button>
+        </div>
+      )}
     </header>
   );
 }

@@ -24,7 +24,6 @@ function EditItemModal({ isOpen, onClose, item, handleEditSubmit }) {
     e.preventDefault();
 
     handleEditSubmit(item.id, formData);
-    onClose();
   };
 
   return (
@@ -57,7 +56,7 @@ function EditItemModal({ isOpen, onClose, item, handleEditSubmit }) {
             onChange={handleChange}
             required
           >
-            <option value="">Select type</option>
+            {/* <option value="">Select type</option> */}
             <option value="tops">Tops</option>
             <option value="bottoms">Bottoms</option>
             <option value="shoes">Shoes</option>
