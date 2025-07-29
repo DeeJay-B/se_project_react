@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { checkToken, register } from "../../utils/auth";
@@ -50,6 +50,10 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
   };
 
   const closeActiveModal = () => {
@@ -161,6 +165,11 @@ function App() {
     setCurrentUser(null);
   };
 
+  const handleEditProfileSubmit = ({ name, avatar }) => {
+    // Add the API call to update the user info here
+    // updateUserProfile({ name, avatar })...
+  };
+
   const openLoginModal = () => setActiveModal("login-modal");
   const openRegisterModal = () => setActiveModal("register-modal");
 
@@ -207,6 +216,7 @@ function App() {
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       onLikeClick={handleLikeClick}
+                      onEditProfile={handleEditProfileClick} // Pass it here!
                     />
                   </ProtectedRoute>
                 }
@@ -235,6 +245,11 @@ function App() {
             onSubmit={handleRegisterSubmit}
             onClose={closeActiveModal}
             switchToLogin={openLoginModal}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onSubmit={handleEditProfileSubmit}
           />
           <LoginModal
             isOpen={activeModal === "login-modal"}

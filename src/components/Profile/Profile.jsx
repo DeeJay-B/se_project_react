@@ -2,12 +2,16 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-function Profile({ handleCardClick, clothingItems, handleAddClick }) {
-  console.log(clothingItems);
+function Profile({
+  handleCardClick,
+  clothingItems,
+  handleAddClick,
+  onEditProfile,
+}) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar />
+        <SideBar onEditProfile={onEditProfile} />
       </section>
       <section className="profile__clothes-section">
         <ClothesSection
@@ -16,7 +20,6 @@ function Profile({ handleCardClick, clothingItems, handleAddClick }) {
           handleAddClick={handleAddClick}
         />
       </section>
-      section
     </div>
   );
 }
