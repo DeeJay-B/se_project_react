@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { login } from "../../utils/auth";
 import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 export function ProtectedRoute({ children }) {
   // Get the current user from context
   const { currentUser } = useContext(CurrentUserContext);

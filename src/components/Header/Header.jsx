@@ -3,8 +3,7 @@ import "./Header.css";
 import logo from "../../assets/header_logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useContext } from "react";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
-
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function Header({
   handleAddClick,
   weatherData,

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./SideBar.css";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import defaultAvatar from "../../assets/header_avatar.png";
 
 function SideBar({ onEditProfile }) {

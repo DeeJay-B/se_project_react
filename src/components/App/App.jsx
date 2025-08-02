@@ -246,11 +246,11 @@ function App() {
             onClose={closeActiveModal}
             switchToLogin={openLoginModal}
           />
-          <EditProfileModal
+          {/* <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
             onSubmit={handleEditProfileSubmit}
-          />
+          /> */}
           <LoginModal
             isOpen={activeModal === "login-modal"}
             onClose={closeActiveModal}

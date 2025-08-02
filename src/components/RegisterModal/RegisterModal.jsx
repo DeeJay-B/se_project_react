@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import "./RegisterModal.css";
 import { register } from "../../utils/auth";
-import { CurrentUserContext } from "../CurrentUserContext/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
