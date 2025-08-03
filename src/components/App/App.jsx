@@ -5,6 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { checkToken, register } from "../../utils/auth";
+import { updateUserProfile } from "../../utils/auth";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -16,6 +17,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -41,6 +43,8 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleCardClick = (card) => {
@@ -62,8 +66,8 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }, reset) => {
     return addItem({ name, imageUrl, weather })
-      .then((values) => {
-        setClothingItems([values, ...clothingItems]);
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
         reset();
       })
@@ -165,9 +169,19 @@ function App() {
     setCurrentUser(null);
   };
 
-  const handleEditProfileSubmit = ({ name, avatar }) => {
-    // Add the API call to update the user info here
-    // updateUserProfile({ name, avatar })...
+  const handleEditProfileSubmit = (formData) => {
+    setIsLoading(true);
+    updateUserProfile(formData)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal(); // Only close if successful
+      })
+      .catch((err) => {
+        console.error("Failed to update profile:", err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const openLoginModal = () => setActiveModal("login-modal");
@@ -246,11 +260,12 @@ function App() {
             onClose={closeActiveModal}
             switchToLogin={openLoginModal}
           />
-          {/* <EditProfileModal
+          <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
             onSubmit={handleEditProfileSubmit}
-          /> */}
+            isLoading={isLoading}
+          />
           <LoginModal
             isOpen={activeModal === "login-modal"}
             onClose={closeActiveModal}
