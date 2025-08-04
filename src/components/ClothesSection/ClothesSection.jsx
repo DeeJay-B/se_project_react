@@ -3,15 +3,24 @@ import ItemCard from "../ItemCard/ItemCard";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function ClothesSection({ handleCardClick, clothingItems, handleAddClick }) {
+function ClothesSection({
+  handleCardClick,
+  clothingItems,
+  handleAddClick,
+  onLikeClick,
+  currentUser,
+}) {
   const currentUser = useContext(CurrentUserContext);
+
+  if (!currentUser) {
+    return <p>Loading your items...</p>;
+  }
 
   return (
     <div className="clothes-section">
       <div className="clothes-section__container">
         <p className="clothes-section__title">Your Items</p>
 
-        {/* ✅ Show Add button only if user is logged in */}
         {currentUser && (
           <button className="clothes-section__add-btn" onClick={handleAddClick}>
             + Add new
@@ -20,15 +29,19 @@ function ClothesSection({ handleCardClick, clothingItems, handleAddClick }) {
       </div>
 
       <ul className="clothes-section__items">
-        {/* ✅ Filter items by current user (for Profile page) */}
         {clothingItems
-          .filter((item) => item.owner === currentUser?._id)
+          .filter((item) => {
+            if (item.owner && typeof item.owner === "object") {
+              return item.owner._id === currentUser._id;
+            }
+            return item.owner === currentUser._id;
+          })
           .map((item) => (
             <ItemCard
               key={item._id}
               item={item}
               onCardClick={handleCardClick}
-              // ✅ Pass currentUser to ItemCard to handle like display
+              onLikeClick={onLikeClick}
               currentUser={currentUser}
             />
           ))}

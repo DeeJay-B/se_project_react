@@ -230,7 +230,8 @@ function App() {
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       onLikeClick={handleLikeClick}
-                      onEditProfile={handleEditProfileClick} // Pass it here!
+                      onEditProfile={handleEditProfileClick}
+                      onLogout={handleSignOut}
                     />
                   </ProtectedRoute>
                 }

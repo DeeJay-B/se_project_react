@@ -32,3 +32,17 @@
 .cards__list {
   gap: 8px;
 }
+
+.card__like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.card__like-button_active {
+  opacity: 1;
+  color: red;
+}
