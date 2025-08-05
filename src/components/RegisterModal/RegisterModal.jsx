@@ -1,11 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react"; // Removed useContext
 import "./RegisterModal.css";
-import { register } from "../../utils/auth";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+// Removed: import { register } from "../../utils/auth";
+// Removed: import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
-  const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
@@ -20,7 +19,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
       ...prev,
       [name]: value,
     }));
-    setError(""); // Clear error when user types
+    setError("");
   };
 
   const handleSubmit = (e) => {

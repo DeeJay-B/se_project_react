@@ -8,7 +8,6 @@ function ClothesSection({
   clothingItems,
   handleAddClick,
   onLikeClick,
-  currentUser,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
