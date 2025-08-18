@@ -36,7 +36,8 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
     >
       {error && <div className="error-message">{error}</div>}
 
-      <div className="form-group">
+      <label className="form-group">
+        Name
         <input
           type="text"
           name="name"
@@ -44,9 +45,11 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.name}
           onChange={handleChange}
           required
+          id="name"
         />
-      </div>
-      <div className="form-group">
+      </label>
+      <label className="form-group">
+        Email
         <input
           type="email"
           name="email"
@@ -54,9 +57,12 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.email}
           onChange={handleChange}
           required
+          id="email"
         />
-      </div>
-      <div className="form-group">
+      </label>
+
+      <label htmlFor="password" className="form-group">
+        Password
         <input
           type="password"
           name="password"
@@ -64,9 +70,11 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.password}
           onChange={handleChange}
           required
+          id="password"
         />
-      </div>
-      <div className="form-group">
+      </label>
+      <label htmlFor="avatar" className="form-group">
+        Avatar
         <input
           type="text"
           name="avatar"
@@ -74,20 +82,22 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.avatar}
           onChange={handleChange}
           required
+          id="avatar"
         />
+      </label>
+      <div className="modal__buttons">
+        <button type="submit" className="modal__submit">
+          Register
+        </button>
+
+        <button
+          type="button"
+          className="modal__switch-button"
+          onClick={switchToLogin}
+        >
+          or Log in
+        </button>
       </div>
-
-      <button type="submit" className="modal__submit">
-        Register
-      </button>
-
-      <button
-        type="button"
-        className="modal__switch-button"
-        onClick={switchToLogin}
-      >
-        or Log in
-      </button>
     </ModalWithForm>
   );
 };

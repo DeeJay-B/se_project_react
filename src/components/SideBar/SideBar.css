@@ -5,20 +5,20 @@
   padding-top: 19px;
   gap: 10px; /* space between avatar, username, button */
   align-items: center; /* center avatar and text horizontally */
-  height: auto; /* allow container height to grow */
+  height: auto;
 }
 
 .sidebar__avatar {
   width: 56px;
   height: 56px;
-  border-radius: 50%; /* optional: make avatar circular */
+  border-radius: 50%;
 }
 
 .sidebar__username {
   font-size: 20px;
   font-weight: 700;
   line-height: 24.8px;
-  margin: 0; /* reset default p margin */
+  margin: 0;
   text-align: center;
 }
 

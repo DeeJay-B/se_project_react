@@ -53,3 +53,42 @@
   height: 40px;
   border-radius: 50%;
 }
+.header__auth-buttons {
+  display: flex;
+  gap: 20px; /* Space between Login and Sign Up buttons */
+  align-items: center;
+}
+
+.header__login {
+  background: transparent;
+  border: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  transition: opacity 0.3s ease;
+}
+
+.header__login:hover {
+  opacity: 0.6;
+}
+
+.header__signup {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Cabinet Grotesk", sans-serif;
+  transition: opacity 0.3s ease;
+}
+
+.header__signup:hover {
+  opacity: 0.8;
+}

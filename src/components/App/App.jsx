@@ -67,7 +67,7 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }, reset) => {
     return addItem({ name, imageUrl, weather })
       .then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        setClothingItems((prevItems) => [newItem.data, ...prevItems]);
         closeActiveModal();
         reset();
       })
@@ -261,12 +261,14 @@ function App() {
             onClose={closeActiveModal}
             switchToLogin={openLoginModal}
           />
-          <EditProfileModal
-            isOpen={activeModal === "edit-profile"}
-            onClose={closeActiveModal}
-            onSubmit={handleEditProfileSubmit}
-            isLoading={isLoading}
-          />
+          {currentUser && (
+            <EditProfileModal
+              isOpen={activeModal === "edit-profile"}
+              onClose={closeActiveModal}
+              onSubmit={handleEditProfileSubmit}
+              isLoading={isLoading}
+            />
+          )}
           <LoginModal
             isOpen={activeModal === "login-modal"}
             onClose={closeActiveModal}

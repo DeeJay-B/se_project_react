@@ -1,4 +1,4 @@
-.modal__opened {
+.modal_opened {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,3 +43,13 @@
   left: 500px;
   border-width: 1px;
 } */
+.modal__buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal__switch-button {
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.5);
+}

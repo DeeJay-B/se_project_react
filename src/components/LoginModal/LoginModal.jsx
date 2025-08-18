@@ -50,7 +50,8 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <div className="form-group">
+      <label htmlFor="email" className="form-group">
+        Email
         <input
           type="email"
           name="email"
@@ -58,9 +59,12 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
           value={formData.email}
           onChange={handleChange}
           required
+          id="email"
         />
-      </div>
-      <div className="form-group">
+      </label>
+      {/* <div className="form-group"> */}
+      <label className="form-group" htmlFor="password">
+        Password
         <input
           type="password"
           name="password"
@@ -68,20 +72,24 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
           value={formData.password}
           onChange={handleChange}
           required
+          id="password"
         />
-      </div>
-      {error && <p className="modal__error">{error}</p>}
-      <button type="submit" className="modal__submit">
-        Log in
-      </button>
+      </label>
+      {/* </div> */}
+      <div className="modal__buttons">
+        {error && <p className="modal__error">{error}</p>}
+        <button type="submit" className="modal__submit">
+          Log in
+        </button>
 
-      <button
-        type="button"
-        className="modal__switch-button"
-        onClick={switchToRegister}
-      >
-        or Register
-      </button>
+        <button
+          type="button"
+          className="modal__switch-button"
+          onClick={switchToRegister}
+        >
+          or signup
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
