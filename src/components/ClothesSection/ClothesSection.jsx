@@ -9,7 +9,7 @@ function ClothesSection({
   handleAddClick,
   onLikeClick,
 }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   if (!currentUser) {
     return <p>Loading your items...</p>;

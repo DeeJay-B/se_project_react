@@ -45,10 +45,10 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.name}
           onChange={handleChange}
           required
-          id="name"
+          id="register-name"
         />
       </label>
-      <label className="form-group">
+      <label htmlFor="register-email" className="form-group">
         Email
         <input
           type="email"
@@ -57,11 +57,11 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.email}
           onChange={handleChange}
           required
-          id="email"
+          id="register-email"
         />
       </label>
 
-      <label htmlFor="password" className="form-group">
+      <label htmlFor="register-password" className="form-group">
         Password
         <input
           type="password"
@@ -70,7 +70,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.password}
           onChange={handleChange}
           required
-          id="password"
+          id="register-password"
         />
       </label>
       <label htmlFor="avatar" className="form-group">

@@ -141,7 +141,7 @@ function App() {
     likePromise
       .then((updatedCard) => {
         setClothingItems((cards) =>
-          cards.map((c) => (c._id === itemId ? updatedCard : c))
+          cards.map((c) => (c._id === itemId ? updatedCard.data : c))
         );
 
         if (selectedCard._id === itemId) {

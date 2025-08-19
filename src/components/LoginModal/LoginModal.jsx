@@ -50,7 +50,7 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="form-group">
+      <label htmlFor="login-email" className="form-group">
         Email
         <input
           type="email"
@@ -59,11 +59,11 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
           value={formData.email}
           onChange={handleChange}
           required
-          id="email"
+          id="login-email"
         />
       </label>
       {/* <div className="form-group"> */}
-      <label className="form-group" htmlFor="password">
+      <label className="form-group" htmlFor="login-password">
         Password
         <input
           type="password"
@@ -72,7 +72,7 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
           value={formData.password}
           onChange={handleChange}
           required
-          id="password"
+          id="login-password"
         />
       </label>
       {/* </div> */}
