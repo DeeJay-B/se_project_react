@@ -50,4 +50,36 @@ function removeCardLike(cardId) {
   }).then(checkRes);
 }
 
-export { checkRes, getItems, addItem, deleteCard, addCardLike, removeCardLike };
+function getCurrentUser() {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+}
+
+function updateCurrentUser({ name, avatar }) {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkRes);
+}
+
+export {
+  checkRes,
+  getItems,
+  addItem,
+  deleteCard,
+  addCardLike,
+  removeCardLike,
+  getCurrentUser,
+  updateCurrentUser,
+};

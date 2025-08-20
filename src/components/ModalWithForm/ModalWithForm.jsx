@@ -8,6 +8,7 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  showSubmitButton = true,
 }) {
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -23,9 +24,11 @@ function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit-button">
-            {buttonText}
-          </button>
+          {showSubmitButton && (
+            <button type="submit" className="modal__submit-button">
+              {buttonText}
+            </button>
+          )}
         </form>
       </div>
     </div>

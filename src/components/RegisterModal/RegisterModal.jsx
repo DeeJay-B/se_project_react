@@ -33,6 +33,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
       title="Register"
       onClose={onClose}
       onSubmit={handleSubmit}
+      showSubmitButton={false}
     >
       {error && <div className="error-message">{error}</div>}
 

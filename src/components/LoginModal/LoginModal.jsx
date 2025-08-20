@@ -49,6 +49,7 @@ const LoginModal = ({ isOpen, onClose, switchToRegister }) => {
       title="Log in"
       onClose={onClose}
       onSubmit={handleSubmit}
+      showSubmitButton={false}
     >
       <label htmlFor="login-email" className="form-group">
         Email
