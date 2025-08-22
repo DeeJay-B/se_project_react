@@ -41,12 +41,11 @@
   height: 24px;
   border: none;
   cursor: pointer;
-  background: url("../../assets/heart-outline.svg") no-repeat center;
+  background: url("../../assets/heart-unliked.svg") no-repeat center;
   background-size: contain;
-  z-index: 2;
 }
 
 .card__like-button_active {
-  background: url("../../assets/heart-filled.svg") no-repeat center;
+  background: url("../../assets/heart-liked.svg") no-repeat center;
   background-size: contain;
 }

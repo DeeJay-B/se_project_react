@@ -36,14 +36,13 @@ export const checkToken = (token) => {
 };
 
 export const updateUserProfile = ({ name, avatar }) => {
-  return fetch("/api/users/me", {
+  const token = localStorage.getItem("jwt");
+  return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject("Failed to update profile")
-  );
+  }).then(checkRes);
 };

@@ -74,7 +74,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           id="register-password"
         />
       </label>
-      <label htmlFor="avatar" className="form-group">
+      <label htmlFor="register-avatar" className="form-group">
         Avatar
         <input
           type="text"
@@ -83,7 +83,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit, switchToLogin }) => {
           value={formData.avatar}
           onChange={handleChange}
           required
-          id="avatar"
+          id="register-avatar"
         />
       </label>
       <div className="modal__buttons">

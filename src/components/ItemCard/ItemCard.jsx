@@ -35,11 +35,9 @@ function ItemCard({ item, onCardClick, onLikeClick }) {
           className={`card__like-button ${
             isLiked ? "card__like-button_active" : ""
           }`}
-          aria-label="Like item"
+          aria-label={isLiked ? "Unlike item" : "Like item"}
           onClick={handleLikeClick}
-        >
-          ❤️
-        </button>
+        />
       )}
     </li>
   );

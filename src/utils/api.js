@@ -4,77 +4,67 @@ function checkRes(res) {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 }
 
+// 👇 central request wrapper
+function request(endpoint, options = {}) {
+  const token = localStorage.getItem("jwt");
+
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...options.headers,
+  };
+
+  return fetch(`${baseUrl}${endpoint}`, {
+    ...options,
+    headers,
+  }).then(checkRes);
+}
+
+// Items
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(checkRes);
+  return request("/items");
 }
 
 function addItem({ name, imageUrl, weather }) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
+  return request("/items", {
     method: "POST",
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(checkRes);
+  });
 }
 
 function deleteCard(cardId) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${cardId}`, {
+  return request(`/items/${cardId}`, {
     method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(checkRes);
+  });
 }
 
 function addCardLike(cardId) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+  return request(`/items/${cardId}/likes`, {
     method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(checkRes);
+  });
 }
 
 function removeCardLike(cardId) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+  return request(`/items/${cardId}/likes`, {
     method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(checkRes);
+  });
 }
 
+// Users
 function getCurrentUser() {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  }).then(checkRes);
+  return request("/users/me");
 }
 
 function updateCurrentUser({ name, avatar }) {
-  const token = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/users/me`, {
+  return request("/users/me", {
     method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
     body: JSON.stringify({ name, avatar }),
-  }).then(checkRes);
+  });
 }
 
 export {
   checkRes,
+  request,
   getItems,
   addItem,
   deleteCard,
